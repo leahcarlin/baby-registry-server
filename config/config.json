@@ -1,0 +1,21 @@
+{
+  "development": {
+    "url": "postgres://weradeop:CDvrJPoG0KEF52Swfj8XkqNw1zrrw6pi@hattie.db.elephantsql.com/weradeop",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
