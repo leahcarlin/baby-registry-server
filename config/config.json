@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://weradeop:CDvrJPoG0KEF52Swfj8XkqNw1zrrw6pi@hattie.db.elephantsql.com/weradeop",
+    "url": "postgres://mucipgzp:PkekyWpuBzHltDw2J9QIh4suzGBeC3Z9@kandula.db.elephantsql.com/mucipgzp",
     "dialect": "postgres",
     "operatorsAliases": "0"
   },
