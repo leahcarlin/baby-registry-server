@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      shortUrl: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       fulfilled: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,

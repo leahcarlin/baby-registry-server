@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       imgUrl: { type: DataTypes.STRING, allowNull: false },
       price: { type: DataTypes.INTEGER, allowNull: false },
       itemUrl: { type: DataTypes.STRING, allowNull: false },
+      shortUrl: { type: DataTypes.STRING, allowNull: false },
       fulfilled: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

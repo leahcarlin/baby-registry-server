@@ -11,6 +11,7 @@ module.exports = {
           price: 200,
           itemUrl:
             "https://www.stokke.com/NLD/nl-nl/100101.html?gclid=CjwKCAjwiuuRBhBvEiwAFXKaNK89PA2ocwkDRQ5Ufs1OUQmmg5s_nfYosbPTzS4ggztbxE2HXqHprhoCvrwQAvD_BwE",
+          shortUrl: "www.bol.com",
           fulfilled: true,
           details: "color: wood",
           createdAt: new Date(),
@@ -23,6 +24,7 @@ module.exports = {
           price: 289,
           itemUrl:
             "https://www.furndaily.com/product/schommelstoel-steerne-beige-velvet",
+          shortUrl: "www.amazon.nl",
           fulfilled: false,
           details: "color: white",
           createdAt: new Date(),
