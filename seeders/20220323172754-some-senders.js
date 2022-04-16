@@ -10,11 +10,13 @@ module.exports = {
           giftMessage: "Love you. Hope you like it",
           createdAt: new Date(),
           updatedAt: new Date(),
+          itemId: 1,
         },
         {
           name: "Gram & Papa",
           createdAt: new Date(),
           updatedAt: new Date(),
+          itemId: 2,
         },
       ],
       {}

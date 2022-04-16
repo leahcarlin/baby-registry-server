@@ -21,8 +21,19 @@ app.get("/items", async (req, res, next) => {
   }
 });
 
+app.get("/sender", async (req, res, next) => {
+  try {
+    const allSenders = await Sender.findAll();
+    console.log(allSenders);
+    res.json(allSenders);
+  } catch (e) {
+    next(e);
+  }
+});
+
 app.post("/sender/:id", async (req, res, next) => {
   try {
+    // add sender & gift message
     const { giftMessage, name } = req.body;
     const id = req.params.id;
     if (!name) res.status(400).send({ message: "Name is required" });
@@ -41,14 +52,15 @@ app.post("/sender/:id", async (req, res, next) => {
     }
   } catch (e) {
     next(e);
+    console.log(e.message);
   }
 });
 
+// update item as fulfilled
 app.patch("/items/:id", async (req, res, next) => {
   try {
     const itemId = req.params.id;
     const item = await Item.findByPk(itemId);
-    console.log(item);
     if (!item) res.status(404).send({ message: "Item not found" });
 
     if (item.fulfilled) {
@@ -64,4 +76,41 @@ app.patch("/items/:id", async (req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
+});
+
+// add item
+app.post("/items", async (req, res, next) => {
+  try {
+    const { title, imgUrl, price, itemUrl, shortUrl, details } = req.body;
+    const newItem = await Item.create({
+      title,
+      imgUrl,
+      price,
+      itemUrl,
+      shortUrl,
+      fulfilled: false,
+      details,
+    });
+    res.status(201).send({ ...newItem.dataValues });
+  } catch (e) {
+    next(e);
+    console.log(e.message);
+  }
+});
+
+// delete item
+app.delete("/items/:id/remove", async (req, res, next) => {
+  try {
+    const itemId = req.params.id;
+    const item = await Item.findByPk(itemId);
+    if (!item) {
+      res.status(404).send({ message: "No item found" });
+    } else {
+      const itemToDelete = await item.destroy();
+      res.status(201).send({ message: `Item with id: ${itemId}, was deleted` });
+    }
+  } catch (e) {
+    next(e);
+    console.log(e.message);
+  }
 });

@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       giftMessage: DataTypes.STRING,
       name: { type: DataTypes.STRING, allowNull: false },
+      itemId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,
