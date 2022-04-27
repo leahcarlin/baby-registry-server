@@ -13,7 +13,13 @@ app.use(corsMiddleWare());
 
 app.get("/items", async (req, res, next) => {
   try {
-    const allItems = await Item.findAll();
+    const allItems = await Item.findAll({
+      include: [
+        {
+          model: Sender,
+        },
+      ],
+    });
     console.log(allItems);
     res.json(allItems);
   } catch (e) {
@@ -31,9 +37,9 @@ app.get("/sender", async (req, res, next) => {
   }
 });
 
+// add sender & gift message
 app.post("/sender/:id", async (req, res, next) => {
   try {
-    // add sender & gift message
     const { giftMessage, name } = req.body;
     const id = req.params.id;
     if (!name) res.status(400).send({ message: "Name is required" });
