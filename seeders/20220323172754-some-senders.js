@@ -12,12 +12,6 @@ module.exports = {
           updatedAt: new Date(),
           itemId: 1,
         },
-        {
-          name: "Gram & Papa",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          itemId: 2,
-        },
       ],
       {}
     );

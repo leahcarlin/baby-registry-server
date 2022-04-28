@@ -11,6 +11,7 @@ const Sender = require("./models").sender;
 app.use(express.json());
 app.use(corsMiddleWare());
 
+// get all items
 app.get("/items", async (req, res, next) => {
   try {
     const allItems = await Item.findAll({
@@ -22,6 +23,32 @@ app.get("/items", async (req, res, next) => {
     });
     console.log(allItems);
     res.json(allItems);
+  } catch (e) {
+    next(e);
+  }
+});
+
+// get all needed items
+app.get("/items/needed", async (req, res, next) => {
+  try {
+    const neededItems = await Item.findAll({
+      where: { fulfilled: false },
+    });
+    console.log(neededItems);
+    res.json(neededItems);
+  } catch (e) {
+    next(e);
+  }
+});
+
+// get all fulfilled items
+app.get("/items/fulfilled", async (req, res, next) => {
+  try {
+    const fulfilledItems = await Item.findAll({
+      where: { fulfilled: true },
+    });
+    console.log(fulfilledItems);
+    res.json(fulfilledItems);
   } catch (e) {
     next(e);
   }
@@ -55,6 +82,7 @@ app.post("/sender/:id", async (req, res, next) => {
         name,
         itemId: id,
       });
+      res.status(201).send(sender.dataValues);
     }
   } catch (e) {
     next(e);
@@ -78,10 +106,6 @@ app.patch("/items/:id", async (req, res, next) => {
   } catch (e) {
     next(e);
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
 });
 
 // add item
@@ -119,4 +143,8 @@ app.delete("/items/:id/remove", async (req, res, next) => {
     next(e);
     console.log(e.message);
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
 });
